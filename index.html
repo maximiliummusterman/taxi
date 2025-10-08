@@ -72,7 +72,7 @@
         .button-mobile {
             border: 0.6vw solid black;
             width: 40vw;
-            height: 8vw;
+            height: 7vw;
             font-size: 5vw;
         }
     </style>
@@ -168,10 +168,7 @@
     </div>
     <div id="text">Won: False</div>
     <div id="text1">0</div>
-    <div class='parent grid-parent'>
-        <div id = "slower" class="child no-select">click start</div>
-        <div id = "faster" class="child no-select">click start</div>
-    </div>
+    <input type="range" id="slider" min="1" max="400" value="200" style="width: 40vw;">
     <div class='parent grid-parent'>
         <div id = "train" class="child no-select">click start</div>
         <div id = "single" class="child no-select">click start</div>
@@ -181,7 +178,9 @@
         <div id = "reset" class="child no-select">click start</div>
     </div>
 <script>
-    let Cd = 2
+    const slider = document.getElementById("slider");
+    let Cd = 200.01
+    slider.addEventListener("input", () => {Cd = 400.01 - slider.value})
 
     function stopper(condition){
         return new Promise((resolve) => {
@@ -375,7 +374,6 @@
             for (let i = 0; i < 500; i++){
                 this.qTabelle[i] = [0, 0, 0, 0, 0, 0]
             }
-            this.learnprobability = 0.9
         }
 
         async move(){
@@ -426,11 +424,11 @@
             }
         }
         document.getElementById("start").classList.add("button-mobile")
-        document.getElementById("slower").classList.add("button-mobile")
-        document.getElementById("faster").classList.add("button-mobile")
         document.getElementById("train").classList.add("button-mobile")
         document.getElementById("single").classList.add("button-mobile")
         document.getElementById("reset").classList.add("button-mobile")
+        document.getElementById("slider").style.width = `80vw`
+        document.getElementById("slider").style.height = `5vw`
     }
     else{
         for (let i = 0; i < 5; i++){
@@ -439,8 +437,6 @@
             }
         }
         document.getElementById("start").classList.add("button-computer")
-        document.getElementById("slower").classList.add("button-computer")
-        document.getElementById("faster").classList.add("button-computer")
         document.getElementById("train").classList.add("button-computer")
         document.getElementById("single").classList.add("button-computer")
         document.getElementById("reset").classList.add("button-computer")
@@ -474,7 +470,7 @@
     }
 
     async function train(){
-        Cd = 1  
+        //Cd = 1  
         buttoncolour("train")
         removeAll()
         await x.train(20)
@@ -482,7 +478,7 @@
     }
 
     async function single() {
-        Cd = 1001
+        //Cd = 1001
         buttoncolour("single")
         removeAll()
         await x.train(1)
@@ -499,13 +495,9 @@
         e.truereset()
         e.initialdraw()
         document.getElementById("start").textContent = "new positions"
-        document.getElementById("slower").textContent = "slower"
-        document.getElementById("faster").textContent = "faster"
         document.getElementById("train").textContent = "train"
         document.getElementById("single").textContent = "single"
         document.getElementById("reset").textContent = "reset q-Table"
-        document.getElementById("slower").addEventListener("click", function(){Cd += 10; buttoncolour("slower")})
-        document.getElementById("faster").addEventListener("click", function(){Cd = Cd - 10 > 0 ? Cd - 10: Cd; buttoncolour("faster")})
         document.getElementById("train").addEventListener("click", train)
         document.getElementById("single").addEventListener("click", single)
         document.getElementById("reset").addEventListener("click", reset)
@@ -515,5 +507,3 @@
 </script>
 </body>
 </html>
-
-
