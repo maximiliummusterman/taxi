@@ -283,7 +283,7 @@
 
         async update(){
             await stopper(this.hasmoved)
-            if (!this.passengerpositionchange){
+            if (this.position.toString() != this.lastposition.toString()){
                 document.getElementById(this.getIndexfromList(this.lastposition)).children[0].style.visibility = "hidden"
                 document.getElementById(this.getIndexfromList(this.position)).children[0].style.visibility = "visible"
                 document.getElementById(this.getIndexfromList(this.position)).children[0].src = "taxi.png"
@@ -509,4 +509,5 @@
 </script>
 </body>
 </html>
+
 
