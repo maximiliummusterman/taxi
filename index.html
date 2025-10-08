@@ -282,7 +282,6 @@
         }
 
         async update(){
-            await stopper(this.hasmoved)
             if (this.lastposition.toString() != this.position.toString()){
                 document.getElementById(this.getIndexfromList(this.lastposition)).children[0].style.visibility = "hidden"
                 document.getElementById(this.getIndexfromList(this.position)).children[0].style.visibility = "visible"
@@ -509,6 +508,7 @@
 </script>
 </body>
 </html>
+
 
 
 
