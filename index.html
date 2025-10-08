@@ -283,9 +283,11 @@
 
         async update(){
             await stopper(this.hasmoved)
-            document.getElementById(this.getIndexfromList(this.lastposition)).children[0].style.visibility = "hidden"
-            document.getElementById(this.getIndexfromList(this.position)).children[0].style.visibility = "visible"
-            document.getElementById(this.getIndexfromList(this.position)).children[0].src = "taxi.png"
+            if (!this.passengerpositionchange){
+                document.getElementById(this.getIndexfromList(this.lastposition)).children[0].style.visibility = "hidden"
+                document.getElementById(this.getIndexfromList(this.position)).children[0].style.visibility = "visible"
+                document.getElementById(this.getIndexfromList(this.position)).children[0].src = "taxi.png"
+            }
             if (this.passengerpositionchange){
                 if (this.passangerposition < 4){
                     document.getElementById(this.getIndexfromList(this.passengerpositions[this.passangerposition])).classList.add("start")
@@ -507,3 +509,4 @@
 </script>
 </body>
 </html>
+
