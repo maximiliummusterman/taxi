@@ -302,6 +302,7 @@
             for (let i = 0; i < this.passengerpositions.length; i++){
                 document.getElementById(this.getIndexfromList(this.passengerpositions[i])).classList.add("blue")
             }
+            return
         }
 
         update(){
@@ -572,14 +573,14 @@
         reset()
     }
 
-    function start(){
+    async function start(){
         buttoncolour("train")
         buttoncolour("single")
         buttoncolour("autotrain")
         buttoncolour("stop")
         buttoncolour("newpos")
         buttoncolour("reset")
-        e.initialdraw()
+        await e.initialdraw()
         document.getElementById("newpos").textContent = "new positions"
         document.getElementById("train").textContent = "train(20)"
         document.getElementById("autotrain").textContent = "autotrain"
@@ -605,4 +606,5 @@
 </script>
 </body>
 </html>
+
 
