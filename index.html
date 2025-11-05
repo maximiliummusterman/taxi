@@ -296,6 +296,7 @@
             this.hasupdated = {"value": false}
             this.hasmoved = {"value": false}
             this.passengerpositionchange = false
+            return
         }
 
         initialdraw(){
@@ -446,7 +447,7 @@
 
         async train(repetions){
             for (let i = 0; i < repetions; i++){
-                this.Umwelt.reset()
+                await this.Umwelt.reset()
                 this.totaltraining += 1
                 this.currentmoves = 0
                 while(!this.Umwelt.getWon()){
@@ -573,14 +574,14 @@
         reset()
     }
 
-    async function start(){
+    function start(){
         buttoncolour("train")
         buttoncolour("single")
         buttoncolour("autotrain")
         buttoncolour("stop")
         buttoncolour("newpos")
         buttoncolour("reset")
-        await e.initialdraw()
+        e.initialdraw()
         document.getElementById("newpos").textContent = "new positions"
         document.getElementById("train").textContent = "train(20)"
         document.getElementById("autotrain").textContent = "autotrain"
@@ -606,5 +607,6 @@
 </script>
 </body>
 </html>
+
 
 
