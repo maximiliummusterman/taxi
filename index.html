@@ -579,6 +579,7 @@
         buttoncolour("stop")
         buttoncolour("newpos")
         buttoncolour("reset")
+        e.initialdraw()
         document.getElementById("newpos").textContent = "new positions"
         document.getElementById("train").textContent = "train(20)"
         document.getElementById("autotrain").textContent = "autotrain"
@@ -593,7 +594,6 @@
         document.getElementById("stop").removeEventListener("click", start)
         document.getElementById("stop").addEventListener("click", stop)
         addAll()
-        e.initialdraw()
     }
 
     document.getElementById("newpos").addEventListener("click", start)
@@ -605,3 +605,4 @@
 </script>
 </body>
 </html>
+
