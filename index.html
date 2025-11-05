@@ -195,8 +195,8 @@
     </div>
 <script>
     const slider = document.getElementById("slider");
-    let Cd = 200.01
-    slider.addEventListener("input", () => {Cd = 400.01 - slider.value})
+    let Cd = slider.value
+    slider.addEventListener("input", () => {Cd = 400 - slider.value})
 
     function stopper(condition){
         return new Promise((resolve) => {
@@ -608,6 +608,7 @@
 </script>
 </body>
 </html>
+
 
 
 
