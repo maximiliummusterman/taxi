@@ -277,6 +277,8 @@
             this.won = false
             document.getElementById(this.getIndexfromList(this.position)).children[0].style.visibility = "hidden"
             this.position = this.generatePosition()
+            document.getElementById(this.getIndexfromList(this.position)).children[0].src = "taxi.png"
+            document.getElementById(this.getIndexfromList(this.position)).children[0].style.visibility = "visible"
             this.lastposition = structuredClone(this.position)
             this.passangerposition = Math.floor(Math.random() * 4)
             this.lastpassangerposition = this.passangerposition
@@ -291,8 +293,6 @@
             }
             document.getElementById(this.getIndexfromList(this.passengerpositions[this.passangerposition])).classList.add("start")
             document.getElementById(this.getIndexfromList(this.passengerpositions[this.end])).classList.add("goal")
-            document.getElementById(this.getIndexfromList(this.position)).children[0].src = "taxi.png"
-            document.getElementById(this.getIndexfromList(this.position)).children[0].style.visibility = "visible"
             this.hasupdated = {"value": false}
             this.hasmoved = {"value": false}
             this.passengerpositionchange = false
@@ -607,6 +607,7 @@
 </script>
 </body>
 </html>
+
 
 
 
